@@ -17,12 +17,14 @@
 cd server
 npm start
 ```
+Access: http://localhost:4000/
 
 ### Frontend
 ```
 cd frontend
 npm start
 ```
+Access: http://localhost:3000/
 
 ## Build
 ### Server

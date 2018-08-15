@@ -1,8 +1,9 @@
-const express = require('express')
-const bodyParser = require('body-parser')
-const cookieParser = require('cookie-parser')
-const cors = require('cors')
-const path = require('path')
+import express from 'express'
+import path from 'path'
+import cors from 'cors'
+import bodyParser from 'body-parser'
+import cookieParser from 'cookie-parser'
+
 const app = express()
 const log = console.log
 var port = process.env.PORT || 4000

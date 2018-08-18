@@ -7,7 +7,8 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "start": "nodemon",
-    "build": "ts-node --inspect=9229 src/index.ts"
+    "dev": "ts-node --inspect=9229 src/index.ts",
+    "build": "NODE_ENV='production' ts-node src/index.ts"
   },
   "jest": {
     "transform": {

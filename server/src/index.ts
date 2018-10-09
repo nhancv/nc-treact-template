@@ -17,8 +17,8 @@ app.use(cors());
 // Cookie parser: https://github.com/expressjs/cookie-parser
 app.use(cookieParser());
 
-// For fontend route
-var frontendDir = path.join(path.dirname(path.dirname(__dirname)), 'frontend');
+// For frontend route
+const frontendDir = path.join(path.dirname(path.dirname(__dirname)), 'frontend');
 app.use('/home', express.static(path.join(frontendDir, 'build')));
 app.get('/home', function(req, res) {
   res.sendFile(path.join(frontendDir, 'build', 'index.html'));

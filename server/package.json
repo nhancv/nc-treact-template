@@ -6,11 +6,11 @@
   "scripts": {
     "test": "jest",
     "test:watch": "jest --watch",
+    "clientBuild": "cd ../frontend; npm run build; cd ../server; rm -rf client; mv ../frontend/build client;",
     "start": "nodemon",
-    "startFull": "npm run client && nodemon",
-    "dev": "ts-node --inspect=9229 src/index.ts",
-    "client": "cd ../frontend; npm run build; cd ../server; rm -rf client; mv ../frontend/build client;",
-    "build": "npm run client && NODE_ENV='production' ts-node src/index.ts"
+    "startFull": "npm run clientBuild && npm run start",
+    "build": "NODE_ENV='production' ts-node src/index.ts",
+    "buildFull": "npm run clientBuild && npm run build"
   },
   "jest": {
     "transform": {

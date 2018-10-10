@@ -44,7 +44,7 @@ app.get('*', function (req, res) {
   //https://www.npmjs.com/package/html-meta-tags
   const seoTAG = htmlMetaTags({
     "keywords": ["nhancv", "reactjs", "nodejs", "expressjs"],
-    "description": `This is Treact Template ${new Date()}`,
+    "description": `Treact Template ${new Date()}`,
     "path": `${req.path}`,
   }, {shouldIgnoreCharset: true});
   let data = fs.readFileSync(path.join(frontendDir, 'index.html'), 'utf8')

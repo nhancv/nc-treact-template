@@ -40,7 +40,6 @@ const frontendDir = path.join(path.dirname(__dirname), 'client');
 app.use('/pub', express.static(frontendDir));
 // Handle React routing, return all requests to React app
 app.get('*', function (req, res) {
-
   //https://www.npmjs.com/package/html-meta-tags
   const seoTAG = htmlMetaTags({
     "keywords": ["nhancv", "reactjs", "nodejs", "expressjs"],

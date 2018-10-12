@@ -9,7 +9,7 @@
     "clientBuild": "cd ../frontend; npm run build; cd ../server; rm -rf client; mv ../frontend/build client;",
     "start": "nodemon",
     "startFull": "npm run clientBuild && npm run start",
-    "build": "NODE_ENV='production' ts-node src/index.ts",
+    "build": "rm -rf dist; tsc --pretty; NODE_ENV='production' node dist/index.js",
     "buildFull": "npm run clientBuild && npm run build"
   },
   "jest": {

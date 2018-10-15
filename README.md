@@ -2,7 +2,7 @@
 
 ## Tech stack
 ### Server
-- Nodedemon
+- Nodemon
 - Typescript
 - ExpressJs
 
@@ -31,6 +31,7 @@ Access: http://localhost:3000/
 ```
 cd server
 npm run build
+npm run production
 ```
 
 ### Frontend

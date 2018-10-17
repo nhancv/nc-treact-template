@@ -52,7 +52,7 @@ app.use(compression());
  * API calls, use Postman for testing
  * This block should declare before default route
  */
-app.get('/api/about', function (req, res) {
+app.get('/api/about', (req, res) => {
   res.json({'about': 'https://nhancv.github.io'});
 });
 
@@ -65,7 +65,7 @@ const frontendDir = path.join(path.dirname(__dirname), 'client');
 // Serve any static files.
 app.use('/pub', express.static(frontendDir));
 // Handle React routing, return all requests to React app
-app.get('*', function (req, res) {
+app.get('*', (req, res) => {
   //https://www.npmjs.com/package/html-meta-tags
   const seoTAG = htmlMetaTags({
     "keywords": ["nhancv", "reactjs", "nodejs", "expressjs"],
@@ -81,7 +81,7 @@ app.get('*', function (req, res) {
 /**
  * Start listen
  */
-app.listen(port, function () {
+app.listen(port, () => {
   log('Server listening at port %d', port);
 });
 

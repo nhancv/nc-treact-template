@@ -43,10 +43,15 @@ var html_meta_tags_1 = __importDefault(require("html-meta-tags"));
 var compression_1 = __importDefault(require("compression"));
 var fs = __importStar(require("fs"));
 var ENV = __importStar(require("./env"));
+var Controller = __importStar(require("./controller"));
 var config = ENV.get();
 var app = express_1.default();
 var log = console.log;
 var port = process.env.PORT || 4000;
+//////////////////////////////////////////////////////////////////
+/**
+ * Config app
+ */
 // Body parser: https://github.com/expressjs/body-parser
 app.use(body_parser_1.default.urlencoded({ extended: false }));
 app.use(body_parser_1.default.json());
@@ -56,13 +61,18 @@ app.use(cors_1.default());
 app.use(cookie_parser_1.default());
 // Use gzip compression
 app.use(compression_1.default());
+//////////////////////////////////////////////////////////////////
+/**
+ * Declare controller
+ */
+var aboutController = new Controller.About();
 /**
  * API calls, use Postman for testing
  * This block should declare before default route
  */
-app.get('/api/about', function (req, res) {
-    res.json({ 'about': 'https://nhancv.github.io' });
-});
+//About module
+app.get('/api/about', aboutController.getAbout);
+//////////////////////////////////////////////////////////////////
 /**
  * Config default route to single page reactJS app
  */

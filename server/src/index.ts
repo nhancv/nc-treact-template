@@ -32,12 +32,17 @@ import htmlMetaTags from 'html-meta-tags';
 import compression from 'compression';
 import * as fs from "fs";
 import * as ENV from "./env";
+import * as Controller from "./controller";
 
 const config = ENV.get();
 const app = express();
 const log = console.log;
 const port = process.env.PORT || 4000;
 
+//////////////////////////////////////////////////////////////////
+/**
+ * Config app
+ */
 // Body parser: https://github.com/expressjs/body-parser
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
@@ -48,15 +53,21 @@ app.use(cookieParser());
 // Use gzip compression
 app.use(compression());
 
+//////////////////////////////////////////////////////////////////
+/**
+ * Declare controller
+ */
+const aboutController: Controller.IAbout = new Controller.About();
+
 /**
  * API calls, use Postman for testing
  * This block should declare before default route
  */
-app.get('/api/about', (req, res) => {
-  res.json({'about': 'https://nhancv.github.io'});
-});
+//About module
+app.get('/api/about', aboutController.getAbout);
 
 
+//////////////////////////////////////////////////////////////////
 /**
  * Config default route to single page reactJS app
  */
@@ -82,7 +93,5 @@ app.get('*', (req, res) => {
  * Start listen
  */
 app.listen(port, () => {
-  log('Server listening at port %d', port);
+  log('Server %s listening at port %d', config.env, port);
 });
-
-log(config);

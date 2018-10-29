@@ -25,12 +25,23 @@
 
 import {Request, Response} from 'express'
 
+export interface IResponse {
+  code: number,
+  body: object
+}
+
 export interface IAbout {
-  getAbout(req: Request, res: Response): Promise<void>
+  getAbout(req: Request, res: Response): Promise<any>
 }
 
 export class About implements IAbout {
-  async getAbout(req: Request, res: Response): Promise<void> {
-    res.json({'about': 'https://nhancv.github.io'});
+  getAbout = async (req: Request, res: Response): Promise<any> => {
+    let response: IResponse = {
+      code: 200,
+      body: {
+        about: 'https://nhancv.github.io'
+      }
+    };
+    return res.status(response.code).json(response);
   }
 }

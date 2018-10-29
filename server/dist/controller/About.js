@@ -61,15 +61,20 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var About = /** @class */ (function () {
     function About() {
-    }
-    About.prototype.getAbout = function (req, res) {
-        return __awaiter(this, void 0, void 0, function () {
+        var _this = this;
+        this.getAbout = function (req, res) { return __awaiter(_this, void 0, void 0, function () {
+            var response;
             return __generator(this, function (_a) {
-                res.json({ 'about': 'https://nhancv.github.io' });
-                return [2 /*return*/];
+                response = {
+                    code: 200,
+                    body: {
+                        about: 'https://nhancv.github.io'
+                    }
+                };
+                return [2 /*return*/, res.status(response.code).json(response)];
             });
-        });
-    };
+        }); };
+    }
     return About;
 }());
 exports.About = About;

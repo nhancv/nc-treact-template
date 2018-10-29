@@ -41,6 +41,7 @@ var body_parser_1 = __importDefault(require("body-parser"));
 var cookie_parser_1 = __importDefault(require("cookie-parser"));
 var html_meta_tags_1 = __importDefault(require("html-meta-tags"));
 var compression_1 = __importDefault(require("compression"));
+var morgan_1 = __importDefault(require("morgan"));
 var fs = __importStar(require("fs"));
 var ENV = __importStar(require("./env"));
 var Controller = __importStar(require("./controller"));
@@ -61,6 +62,9 @@ app.use(cors_1.default());
 app.use(cookie_parser_1.default());
 // Use gzip compression
 app.use(compression_1.default());
+// Config http logging with morgan
+var morganFormat = ':remote-addr - :remote-user [:date[clf]] ":method :url HTTP/:http-version" :status :res[content-length] - :response-time ms ":referrer" ":user-agent"';
+app.use(morgan_1.default(morganFormat));
 //////////////////////////////////////////////////////////////////
 /**
  * Declare controller
@@ -96,7 +100,6 @@ app.get('*', function (req, res) {
  * Start listen
  */
 app.listen(port, function () {
-    log('Server listening at port %d', port);
+    log('Server %s listening at port %d', config.env, port);
 });
-log(config);
 //# sourceMappingURL=index.js.map

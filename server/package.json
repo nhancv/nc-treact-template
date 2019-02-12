@@ -11,7 +11,8 @@
     "startFull": "npm run clientBuild && npm run start",
     "build": "rm -rf dist; tsc --pretty",
     "buildFull": "npm run clientBuild && npm run build",
-    "production": "NODE_ENV='production' node dist/index.js"
+    "production": "NODE_ENV='production' node dist/index.js",
+    "heroku-postbuild": "echo Skip build on Heroku"
   },
   "jest": {
     "transform": {
@@ -51,5 +52,6 @@
     "ts-jest": "^23.10.4",
     "ts-node": "^7.0.1",
     "typescript": "^3.1.6"
-  }
+  },
+  "heroku-run-build-script": true
 }
